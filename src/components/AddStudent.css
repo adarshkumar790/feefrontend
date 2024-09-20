@@ -1,0 +1,45 @@
+.add-student-container {
+    max-width: 400px; /* Limit the width of the form */
+    margin: 50px auto; /* Center the form with margin from the top */
+    padding: 20px; /* Add padding inside the container */
+    background-color: #f2f2f2; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  h1 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Darker color for the heading */
+  }
+  
+  form div {
+    margin-bottom: 15px; /* Space between form fields */
+  }
+  
+  label {
+    display: block; /* Make label a block element */
+    margin-bottom: 5px; /* Space below the label */
+    font-weight: bold; /* Bold text for labels */
+  }
+  
+  input {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Padding inside the inputs */
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+  button {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #007bff; /* Bootstrap primary color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+   

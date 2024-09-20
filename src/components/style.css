@@ -1,0 +1,79 @@
+/* styles.css */
+
+.home-container {
+  padding: 20px;
+  background-color: #f5f5f5; /* Light background */
+  min-height: 100vh; /* Full height for better layout */
+}
+
+.filter-container {
+  margin-bottom: 20px;
+  background-color: #ffffff; /* White background for filter */
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.filter-container label {
+  margin-right: 10px;
+  font-weight: bold; /* Bold labels */
+  color: #333; /* Darker text color */
+}
+
+.filter-container input,
+.period-select {
+  padding: 8px; /* Increased padding for inputs */
+  border-radius: 4px;
+  border: 1px solid #007bff; /* Blue border */
+  transition: border-color 0.3s; /* Smooth border transition */
+}
+
+.filter-container input:focus,
+.period-select:focus {
+  border-color: #0056b3; /* Darker blue on focus */
+  outline: none; /* Remove outline */
+}
+
+.fee-collection-container {
+  margin-top: 40px;
+}
+
+.date-picker {
+  margin-top: 10px;
+}
+
+.collection-summary {
+  margin-top: 20px;
+  background-color: #e6f7ff; /* Light blue background */
+  padding: 15px;
+  border-radius: 8px; /* Rounded corners */
+  border: 1px solid #b3daff; /* Light border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.student-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.student-list-item {
+  background-color: #ffffff; /* White background for items */
+  padding: 15px; /* Increased padding */
+  margin-bottom: 15px; /* More space between items */
+  border-radius: 8px; /* Rounded corners */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); /* Light shadow for items */
+}
+
+.view-fee-link {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+  font-weight: bold; /* Bold link text */
+}
+
+.view-fee-link:hover {
+  text-decoration: underline; 
+}

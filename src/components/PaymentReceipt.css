@@ -1,0 +1,131 @@
+.payment-receipt-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #000;
+  background-color: #f9f9f9;
+}
+
+/* Header Styling */
+.receipt-heading {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.receipt-heading h3 {
+  margin: 5px 0;
+}
+
+.receipt-heading p {
+  margin: 0;
+}
+
+/* Sub-header for alignment */
+.receipt-header {
+  margin-bottom: 5px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.header-row p {
+  margin: 0;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.receipt-body {
+  margin-bottom: 20px;
+}
+
+/* Payment Table Styling */
+.payment-details-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payment-details-table th,
+.payment-details-table td {
+  border: 1px solid #000;
+  padding: 5px; /* Reduced padding for smaller boxes */
+  text-align: left;
+  font-size: 14px; /* Decreased font size */
+}
+
+.payment-details-table th {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+
+/* Specific styles for SI No, Description, and Amount headers */
+.payment-details-table th:nth-child(1),
+.payment-details-table td:nth-child(1) {
+  width: 10%; /* Adjust width as needed */
+}
+
+.payment-details-table th:nth-child(2),
+.payment-details-table td:nth-child(2) {
+  width: 70%; /* Adjust width as needed */
+}
+
+.payment-details-table th:nth-child(3),
+.payment-details-table td:nth-child(3) {
+  width: 20%; /* Adjust width as needed */
+}
+
+/* Footer and Print Button */
+.receipt-footer {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.print-button-container {
+  text-align: center;
+}
+
+.print-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.print-button:hover {
+  background-color: #0056b3;
+}
+
+/* Print Styles - Hide unwanted elements during printing */
+@media print {
+  .print-button-container {
+    display: none; /* Hides the print button container */
+  }
+
+  .payment-receipt-container {
+    border: none; /* Remove border for clean print */
+    margin: 0; /* Remove margin */
+    padding: 0; /* Remove padding */
+    width: 320mm; /* Set width for F3 size */
+    height: 480mm; /* Set height for F3 size */
+    box-shadow: none; /* Remove any box shadow */
+  }
+
+  .payment-details-table th,
+  .payment-details-table td {
+    border: 1px solid #000; /* Keep borders for table */
+  }
+
+  .payment-details-table th {
+    background-color: #fff; /* Make the header background white */
+  }
+}

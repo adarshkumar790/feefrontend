@@ -1,0 +1,69 @@
+/* styles.css */
+
+.home-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  .filter-container {
+    margin-bottom: 20px;
+  }
+  
+  .filter-container label {
+    margin-right: 10px;
+  }
+  
+  .filter-container input {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
+  .fee-collection-container {
+    margin-top: 40px;
+  }
+  
+  .period-select {
+    padding: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 10px;
+  }
+  
+  .date-picker {
+    margin-top: 10px;
+  }
+  
+  .collection-summary {
+    margin-top: 20px;
+    background-color: #e6f7ff;
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #b3daff;
+  }
+  
+  .student-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .student-list-item {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .view-fee-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .view-fee-link:hover {
+    text-decoration: underline;
+  }
+  
