@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
 import './style.css';  // Import CSS file
+const baseURL = 'https://feebackend.onrender.com'
 
 function FeeCollection() {
   const [period, setPeriod] = useState('daily');
@@ -16,11 +17,11 @@ function FeeCollection() {
   }, [period]);
 
   const fetchCollectionData = async () => {
-    let url = `http://localhost:5000/api/fees/collection/${period}`;
+    let url = `${baseURL}/api/fees/collection/${period}`;
 
     if (period === 'specific') {
       const formattedDate = specificDate.toISOString().split('T')[0]; 
-      url = `http://localhost:5000/api/fees/collection/date/${formattedDate}`;
+      url = `${baseURL}/api/fees/collection/date/${formattedDate}`;
     }
 
     try {

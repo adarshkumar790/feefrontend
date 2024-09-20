@@ -3,6 +3,7 @@ import axios from 'axios';
 import StudentList from '../components/StudentList';
 import FeeCollection from '../components/FeeCollection';
 import './style.css';  // Import CSS file
+const baseURL = 'https://feebackend.onrender.com'
 
 function Home() {
   const [students, setStudents] = useState([]);
@@ -10,7 +11,7 @@ function Home() {
 
   useEffect(() => {
     if (classFilter) {
-      axios.get(`http://localhost:5000/api/students/${classFilter}`)
+      axios.get(`${baseURL}/api/students/${classFilter}`)
         .then(response => setStudents(response.data))
         .catch(error => console.log(error));
     }

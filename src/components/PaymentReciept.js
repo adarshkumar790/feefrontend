@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './PaymentReceipt.css';
+const baseURL = 'https://feebackend.onrender.com'
 
 function PaymentReceipt() {
   const { paymentId } = useParams();
@@ -14,7 +15,7 @@ function PaymentReceipt() {
     if (!payment) {
       const fetchPayment = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/api/payments/${paymentId}`);
+          const response = await axios.get(`${baseURL}/api/payments/${paymentId}`);
           setPayment(response.data);
         } catch (error) {
           console.error(error);

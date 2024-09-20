@@ -19,10 +19,11 @@ function FeePage() {
   const [paymentMonth, setPaymentMonth] = useState('');
   const [paymentAmount, setPaymentAmount] = useState('');
   const [newTotalFees, setNewTotalFees] = useState(0);
+  const baseURL = 'https://feebackend.onrender.com'
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/fees/${studentId}`)
+      .get(`${baseURL}/api/fees/${studentId}`)
       .then((response) => {
         if (response.data) {
           setFeeDetails(response.data);
@@ -46,7 +47,7 @@ function FeePage() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:5000/api/fees`, {
+      const response = await axios.post(`${baseURL}/api/fees`, {
         studentId,
         totalFees: newTotalFees,
         paidFees: 0,
@@ -81,7 +82,7 @@ function FeePage() {
     const updatedDues = totalFees - updatedPaidFees;
 
     try {
-      const response = await axios.put(`http://localhost:5000/api/fees/${studentId}`, {
+      const response = await axios.put(`${baseURL}/api/fees/${studentId}`, {
         totalFees,
         paidFees: updatedPaidFees,
         dues: updatedDues,

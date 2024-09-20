@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'; // Import toastify components
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for toastify
 import './AddStudent.css'; // Import the CSS file
+const baseURL = 'https://feebackend.onrender.com'
 
 function AddStudent() {
   const [name, setName] = useState('');
@@ -13,7 +14,7 @@ function AddStudent() {
     e.preventDefault();
     const newStudent = { name, class: studentClass, rollNo };
     try {
-      await axios.post('http://localhost:5000/api/students', newStudent);
+      await axios.post(`${baseURL}/api/students`, newStudent);
       toast.success('Student added successfully!'); // Show success toast
       setName('');
       setStudentClass('');
