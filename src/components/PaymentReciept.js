@@ -56,7 +56,7 @@ function PaymentReceipt() {
   ];
 
   const mergedFees = staticFees.map(staticFee => {
-    if (staticFee.description === 'Institute Fee') {
+    if (staticFee.description === 'Tuition Fee') {
       return { ...staticFee, amount: payment.amount };
     }
     const dynamicFee = paymentDetails.find(fee => fee.description === staticFee.description);
