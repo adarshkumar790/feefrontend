@@ -1,95 +1,124 @@
+/* Container for the entire receipt page */
 .payment-receipt-container {
-  max-width: 600px;
-  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200%;
   padding: 20px;
-  border: 1px solid #000;
-  background-color: #f9f9f9;
 }
 
-/* Header Styling */
+/* Container to hold both receipts side by side */
+.receipts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 200%;
+  max-width: 1200px; /* Max width for receipts to avoid stretching on larger screens */
+}
+
+/* Styling for individual receipt */
+.receipt {
+  border: 1px solid black;
+  padding: 20px;
+  width: 48%; /* Each receipt takes half of the container */
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading section for the receipt */
 .receipt-heading {
   text-align: center;
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 .receipt-heading h3 {
-  margin: 5px 0;
-}
-
-.receipt-heading p {
   margin: 0;
+  font-size: 1.5em;
+  text-transform: uppercase;
 }
 
-/* Sub-header for alignment */
+.receipt-heading h4 {
+  margin: 5px 0;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+/* Header section for date, receipt number, name, and roll number */
 .receipt-header {
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 
 .header-row {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2px;
+  margin-bottom: 10px;
 }
 
-.header-row p {
+.header-row h5 {
   margin: 0;
+  /* font-weight: bold; */
+  font-size: 1em;
 }
 
 .left {
-  text-align: left;
+  width: 48%;
 }
 
 .right {
+  width: 48%;
   text-align: right;
 }
 
-.receipt-body {
-  margin-bottom: 20px;
-}
-
-/* Payment Table Styling */
+/* Table styling for the payment details */
 .payment-details-table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 15px;
 }
 
 .payment-details-table th,
 .payment-details-table td {
-  border: 1px solid #000;
-  padding: 5px; /* Reduced padding for smaller boxes */
+  border: 1px solid black;
+  padding: 10px;
   text-align: left;
-  font-size: 14px; /* Decreased font size */
-}
-
-.payment-details-table th {
-  background-color: #e0e0e0;
   font-weight: bold;
 }
 
-/* Specific styles for SI No, Description, and Amount headers */
-.payment-details-table th:nth-child(1),
-.payment-details-table td:nth-child(1) {
-  width: 10%; /* Adjust width as needed */
+.payment-details-table th {
+  background-color: #f2f2f2;
+  /* font-weight: ; */
+  font-size: 1.2em;  
+   
 }
 
-.payment-details-table th:nth-child(2),
-.payment-details-table td:nth-child(2) {
-  width: 70%; /* Adjust width as needed */
+.payment-details-table td {
+  background-color: #fff;
 }
 
-.payment-details-table th:nth-child(3),
 .payment-details-table td:nth-child(3) {
-  width: 20%; /* Adjust width as needed */
+  text-align: right;
 }
 
-/* Footer and Print Button */
-.receipt-footer {
-  text-align: center;
+/* Footer section for total in words and signature */
+.receipt-body h4 {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.header-row p {
+  /* text-align: right; */
   margin-top: 20px;
 }
 
+.receipt-body p {
+  margin: 10px 0;
+}
+
+/* Print button container */
 .print-button-container {
-  text-align: center;
+  margin-top: 20px;
 }
 
 .print-button {
@@ -99,33 +128,36 @@
   color: #fff;
   border: none;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .print-button:hover {
   background-color: #0056b3;
 }
 
-/* Print Styles - Hide unwanted elements during printing */
+/* Print styles */
 @media print {
   .print-button-container {
-    display: none; /* Hides the print button container */
+    display: none;
   }
 
   .payment-receipt-container {
-    border: none; /* Remove border for clean print */
-    margin: 0; /* Remove margin */
-    padding: 0; /* Remove padding */
-    width: 320mm; /* Set width for F3 size */
-    height: 480mm; /* Set height for F3 size */
-    box-shadow: none; /* Remove any box shadow */
+    width: 200%;
+    height: 100%;
   }
 
-  .payment-details-table th,
-  .payment-details-table td {
-    border: 1px solid #000; /* Keep borders for table */
+  .receipts {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 180%;
   }
 
-  .payment-details-table th {
-    background-color: #fff; /* Make the header background white */
+  .receipt {
+    width: 50%;
+    height: 500px; /* Adjust height as needed */
+    margin: 0;
+    padding: 30px;
+    border: none;
+    box-shadow: none;
   }
 }

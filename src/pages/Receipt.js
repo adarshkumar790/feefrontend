@@ -153,7 +153,7 @@ function Receipt({ payment }) {
             </tr>
           </tbody>
         </table>
-        <h5>Rupees in words: {totalInWords}</h5>
+        <h3>Rupees in words: {totalInWords}</h3>
       </div>
 
       <div className="print-button-container">

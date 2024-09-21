@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './PaymentReceipt.css';
-const baseURL = 'https://feebackend.onrender.com'
+
+const baseURL = 'https://feebackend.onrender.com';
 
 function PaymentReceipt() {
   const { paymentId } = useParams();
   const location = useLocation();
   const [payment, setPayment] = useState(location.state?.payment || null);
-  const [name, setName] = useState(location.state?.name || ''); // Retrieve name from state
-  const [rollNo, setRollNo] = useState(location.state?.rollNo || ''); // Retrieve roll number from state
+  const [name, setName] = useState(location.state?.name || '');
+  const [rollNo, setRollNo] = useState(location.state?.rollNo || '');
 
   useEffect(() => {
     if (!payment) {
@@ -47,12 +48,8 @@ function PaymentReceipt() {
     { id: 'laboratory', description: 'Laboratory Fee', amount: 0 },
     { id: 'lab', description: 'Computer Laboratory Fee', amount: 0 },
     { id: 'game', description: 'Game Fee', amount: 0 },
-    { id: 'electricity', description: 'Electricity & Generator', amount: 0 },
-    { id: 'exam', description: 'Exam Fee', amount: 0 },
-    { id: 'journal', description: 'Journal & Magazine Fee', amount: 0 },
     { id: 'cultural', description: 'Cultural Fee', amount: 0 },
     { id: 'prospectus', description: 'Prospectus Fee & Admission Form', amount: 0 },
-    { id: 'others', description: 'Others', amount: 0 },
   ];
 
   const mergedFees = staticFees.map(staticFee => {
@@ -63,12 +60,10 @@ function PaymentReceipt() {
     return dynamicFee ? { ...staticFee, amount: dynamicFee.amount } : staticFee;
   });
 
-  // Calculate total amount
   const totalAmount = mergedFees.reduce((acc, item) => acc + item.amount, 0);
   const totalRow = { id: '--', description: 'Total', amount: totalAmount };
   mergedFees.push(totalRow);
 
-  // Function to convert number to words
   const convertToWords = (num) => {
     const a = [
       '', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine',
@@ -111,65 +106,74 @@ function PaymentReceipt() {
 
   return (
     <div className="payment-receipt-container">
-      <div className="receipt-heading">
-        <h3>MONEY RECEIPT</h3>
-        <p><strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE</strong> <br />
-          JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</p>
-        <p>Mob: 9576035072</p>
-      </div>
+      <div className="receipts">
+        {[...Array(2)].map((_, index) => (
+          <div className="receipt" key={index}>
+            <div className="receipt-heading">
+              <h3>MONEY RECEIPT</h3>
+              <h4><strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE</strong> <br />
+                JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</h4>
+              <p>Phon No: 06512913165</p>
+            </div>
+            <div className="receipt-header">
+              <div className="header-row">
+                <div className="left">
+                  <h5><strong>Receipt No:</strong> {receiptNo}</h5>
+                </div>
+                <div className="right">
+                  <h5><strong>Date:</strong> {new Date(payment.date).toLocaleDateString()}</h5>
+                </div>
+              </div>
+              <div className="header-row">
+                <div className="left">
+                  <h5><strong>Name:</strong> {name}</h5>
+                </div>
+              </div>
+              <div className="header-row">
+                <div className="left">
+                  <h5><strong>Roll No:</strong> {rollNo}</h5>
+                </div>
+                <div className="right">
+                  <h5><strong>Course:</strong> B.Ed</h5>
+                </div>
+              </div>
+            </div>
 
-      <div className="receipt-header">
-        <div className="header-row">
-          <div className="left">
-            <p><strong>Receipt No:</strong> {receiptNo}</p>
+            <div className="receipt-body">
+              <table className="payment-details-table">
+                <thead>
+                  <tr>
+                    <th>SI No</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {mergedFees.length > 0 ? (
+                    mergedFees.map((item, index) => (
+                      <tr key={item.id}>
+                        <td>{index + 1}</td>
+                        <td>{item.description}</td>
+                        <td>{item.amount}</td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td colSpan="3">No payment details available.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+              <h4>Received Rupees (in words): {totalInWords}</h4>
+            </div>
+            <div className="header-row">
+              <p><strong>Thank You</strong></p>
+              <p><strong>Authorized Signature</strong></p>
+            </div>
           </div>
-          <div className="right">
-            <p><strong>Date:</strong> {new Date(payment.date).toLocaleDateString()}</p>
-          </div>
-        </div>
-        <div className="header-row">
-          <div className="left">
-            <p><strong>Name:</strong> {name}</p>
-          </div>
-        </div>
-        <div className="header-row">
-          <div className="right">
-            <p><strong>Roll No:</strong> {rollNo}</p>
-          </div>
-          <div className="left">
-            <p><strong>Course:</strong> B.Ed</p>
-          </div>
-        </div>
+        ))}
       </div>
-
-      <div className="receipt-body">
-        <table className="payment-details-table">
-          <thead>
-            <tr>
-              <th>SI No</th>
-              <th>Description</th>
-              <th>Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mergedFees.length > 0 ? (
-              mergedFees.map((item, index) => (
-                <tr key={item.id}>
-                  <td>{index + 1}</td>
-                  <td>{item.description}</td>
-                  <td>{item.amount}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan="3">No payment details available.</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-        <h4>Received Rupees (in words): {totalInWords}</h4>
-      </div>
-
+      
       <div className="print-button-container">
         <button onClick={() => window.print()} className="print-button">Print Receipt</button>
       </div>
