@@ -1,69 +1,73 @@
-/* styles.css */
-
+/* Home Container */
 .home-container {
-    padding: 20px;
-    background-color: #f5f5f5;
-  }
-  
-  .filter-container {
-    margin-bottom: 20px;
-  }
-  
-  .filter-container label {
-    margin-right: 10px;
-  }
-  
-  .filter-container input {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .fee-collection-container {
-    margin-top: 40px;
-  }
-  
-  .period-select {
-    padding: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    margin-top: 10px;
-  }
-  
-  .date-picker {
-    margin-top: 10px;
-  }
-  
-  .collection-summary {
-    margin-top: 20px;
-    background-color: #e6f7ff;
-    padding: 15px;
-    border-radius: 4px;
-    border: 1px solid #b3daff;
-  }
-  
-  .student-list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-  }
-  
-  .student-list-item {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .view-fee-link {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .view-fee-link:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 800px; /* Limit width for better readability */
+  margin: 20px auto; /* Center the container */
+  padding: 20px; /* Add padding around the container */
+  background-color: #f9f9f9; /* Light background color */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Heading */
+h1 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below heading */
+}
+
+/* Button Container */
+.button-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: center; /* Center buttons */
+  margin-bottom: 20px; /* Space below button container */
+}
+
+/* Button Styles */
+.add-student-button,
+.generate-receipt-button {
+  margin: 0 10px; /* Space between buttons */
+  padding: 10px 20px; /* Padding for the buttons */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  text-decoration: none; /* Remove underline from link */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 4px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.add-student-button:hover,
+.generate-receipt-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Filter Container */
+.filter-container {
+  text-align: center; /* Center filter input */
+  margin-bottom: 20px; /* Space below filter container */
+}
+
+.filter-container label {
+  margin-right: 10px; /* Space between label and input */
+}
+
+/* Input Styles */
+.filter-container input {
+  padding: 8px; /* Padding for input */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+  width: 200px; /* Fixed width for the input */
+}
+
+/* Student List Styles */
+.student-list {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
+.student-list-item {
+  margin: 10px 0; /* Space between list items */
+  padding: 10px; /* Padding for each list item */
+  background-color: #ffffff; /* White background for items */
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}

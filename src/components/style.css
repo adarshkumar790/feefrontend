@@ -77,3 +77,24 @@
 .view-fee-link:hover {
   text-decoration: underline; 
 }
+
+.button-container {
+  margin-top: 20px; /* Space above the button container */
+}
+
+.add-student-button,
+.generate-receipt-button {
+  margin-right: 10px; /* Space between buttons */
+  padding: 10px 15px; /* Padding for the buttons */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  text-decoration: none; /* Remove underline from link */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 4px; /* Rounded corners */
+}
+
+.add-student-button:hover,
+.generate-receipt-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
