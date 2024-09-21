@@ -137,7 +137,7 @@ function FeePage() {
           <div className="add-payment-container">
             <h3>Add Payment</h3>
             <div className="form-group">
-              <label>Month</label>
+              <label>Installment</label>
               <input 
                 type="text" 
                 value={paymentMonth} 

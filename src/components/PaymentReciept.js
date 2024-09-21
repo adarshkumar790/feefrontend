@@ -42,7 +42,7 @@ function PaymentReceipt() {
   const staticFees = [
     { id: 'admission', description: 'Admission & Registration Fee', amount: 0 },
     { id: 'fund', description: 'Development Fund', amount: 0 },
-    { id: 'institute', description: 'Institute Fee', amount: 0 },
+    { id: 'institute', description: 'Tuition Fee', amount: 0 },
     { id: 'library', description: 'Library Fee', amount: 0 },
     { id: 'laboratory', description: 'Laboratory Fee', amount: 0 },
     { id: 'lab', description: 'Computer Laboratory Fee', amount: 0 },
