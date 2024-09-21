@@ -38,6 +38,7 @@ function AddStudent() {
             type="text" 
             value={name} 
             onChange={(e) => setName(e.target.value)} 
+            required
           />
         </div>
         <div>
@@ -46,6 +47,7 @@ function AddStudent() {
             type="text" 
             value={studentClass} 
             onChange={(e) => setStudentClass(e.target.value)} 
+            required
           />
         </div>
         <div>
@@ -54,6 +56,7 @@ function AddStudent() {
             type="number" 
             value={rollNo} 
             onChange={(e) => setRollNo(Number(e.target.value))} 
+            required
           />
         </div>
         <button type="submit">Add Student</button>
