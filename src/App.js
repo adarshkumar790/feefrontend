@@ -5,6 +5,7 @@ import FeePage from './pages/FeePage';
 import AddStudent from './components/AddStudent';
 import PaymentReceipt from './components/PaymentReciept';
 import Login from './pages/Login';
+import Receipt from './pages/Receipt';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/fee/:studentId" element={<FeePage />} />
           <Route path="/payment-receipt/:paymentId" element={<PaymentReceipt />} />
           <Route path='/' element={<Login/>}/>
+          <Route path='/receipt' element={<Receipt/>}/>
         </Routes>
       </div>
     </Router>

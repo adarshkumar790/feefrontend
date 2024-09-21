@@ -1,0 +1,101 @@
+/* Adjusted Payment Receipt Container without Border */
+.payment-receipt-container {
+  padding: 10px; /* Reduced padding */
+  width: 450px; /* Reduced width slightly */
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Retained subtle shadow for print */
+  font-size: 12px; /* Reduced overall font size */
+}
+
+/* Receipt Heading Styles */
+.receipt-heading {
+  text-align: center;
+  margin-bottom: 10px; /* Reduced margin */
+}
+
+.receipt-heading h3 {
+  margin: 0;
+  font-size: 18px; /* Reduced font size */
+  font-weight: bold;
+}
+
+.receipt-heading p {
+  margin: 0;
+  font-size: 12px; /* Reduced font size */
+}
+
+/* Styles for aligning receipt number, date, and name in the same row */
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px; /* Reduced margin */
+}
+
+.receipt-header p {
+  margin: 0;
+  font-size: 12px; /* Reduced font size */
+}
+
+/* Receipt Body Styles */
+.payment-details-table {
+  width: 100%;
+  margin-top: 10px; /* Reduced margin */
+  border-collapse: collapse;
+  font-size: 12px; /* Reduced font size */
+}
+
+.payment-details-table th,
+.payment-details-table td {
+  border: 1px solid #000;
+  padding: 5px; /* Reduced padding */
+  text-align: left;
+}
+
+/* Print Button Container */
+.print-button-container {
+  margin-top: 10px; /* Reduced margin */
+  text-align: center;
+}
+
+.print-button {
+  padding: 8px 15px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
+}
+
+/* Reduced button hover effect */
+.print-button:hover {
+  background-color: #45a049;
+}
+
+/* Payment Form Styles */
+.payment-form {
+  margin: 20px auto; /* Center the form horizontally */
+  width: 400px; /* Fixed width for the form */
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center items horizontally */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form elements */
+  width: 100%; /* Make the form groups take full width */
+}
+
+.form-group label {
+  display: block; /* Labels on their own line */
+  margin-bottom: 5px; /* Space below labels */
+}
+
+.submit-button {
+  padding: 10px 15px; /* Padding for the button */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100%; /* Full width for the button */
+}
+
+.submit-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
