@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify'; // Import toastify components
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for toastify
 import './AddStudent.css'; // Import the CSS file
-const baseURL = 'https://feebackend.onrender.com'
+const baseURL = 'https://feebackend.onrender.com';
 
 function AddStudent() {
   const [name, setName] = useState('');
   const [studentClass, setStudentClass] = useState('');
   const [rollNo, setRollNo] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ function AddStudent() {
       setName('');
       setStudentClass('');
       setRollNo('');
+      navigate('/'); // Redirect to home page
     } catch (error) {
       console.log(error);
       toast.error('Failed to add student. Please try again.'); // Show error toast
