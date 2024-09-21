@@ -21,7 +21,7 @@ function AddStudent() {
       setName('');
       setStudentClass('');
       setRollNo('');
-      navigate('/'); // Redirect to home page
+      navigate('/home'); // Redirect to home page
     } catch (error) {
       console.log(error);
       toast.error('Failed to add student. Please try again.'); // Show error toast
