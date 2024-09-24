@@ -1,4 +1,5 @@
 .add-student-container {
+    
     max-width: 400px; /* Limit the width of the form */
     margin: 50px auto; /* Center the form with margin from the top */
     padding: 20px; /* Add padding inside the container */

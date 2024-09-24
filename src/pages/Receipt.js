@@ -13,7 +13,7 @@ function PaymentForm({ onSubmit }) {
     'Computer Laboratory Fee': 0,
     'Transport Fee': 0,
     'Game Fee': 0,
-    'Electricity & Generator Fee': 0,
+    // 'Electricity & Generator Fee': 0,
     'College Examination Fee': 0,
     'Journal & Magazine': 0,
     'Cultural Activity': 0,
@@ -65,9 +65,9 @@ function Receipt({ payment }) {
   if (!payment) return null;
 
   const receiptNo = `NNG-${Math.floor(Math.random() * 10000)}`;
-  
+
   const totalAmount = Object.keys(payment.paymentDetails).reduce(
-    (sum, key) => key !== 'Total' ? sum + payment.paymentDetails[key] : sum, 
+    (sum, key) => key !== 'Total' ? sum + payment.paymentDetails[key] : sum,
     0
   );
 
@@ -105,12 +105,15 @@ function Receipt({ payment }) {
 
   const totalInWords = convertToWords(totalAmount) + ' Rupees Only';
 
-  return (
-    <div className="payment-receipt-container">
+  // Receipt template for duplication
+  const receiptTemplate = (
+    <div className="receipt">
       <div className="receipt-heading">
         <h3>MONEY RECEIPT</h3>
-        <p><strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE</strong></p>
-        <p>Mob: 9576035072</p>
+        <p><strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br/>
+        JAMUARY, KANKE, RANCHI-834006(JHARKHAND)
+        </strong></p>
+        <p>Phon No: 06512913165</p>
       </div>
 
       <div className="receipt-header">
@@ -153,9 +156,20 @@ function Receipt({ payment }) {
             </tr>
           </tbody>
         </table>
-        <h3>Rupees in words: {totalInWords}</h3>
+        <h5>Rupees in words: {totalInWords}</h5>
+        <div className="header-row">
+              <p><strong>Thank You</strong></p>
+              <p><strong>Authorized Signature</strong></p>
+            </div>
       </div>
+    </div>
+  );
 
+  return (
+    <div className="receipt-page">
+      {receiptTemplate}
+      <hr className="divider" />
+      {receiptTemplate}
       <div className="print-button-container">
         <button onClick={() => window.print()} className="print-button">Print Receipt</button>
       </div>
