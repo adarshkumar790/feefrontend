@@ -13,7 +13,6 @@ function PaymentForm({ onSubmit }) {
     'Computer Laboratory Fee': 0,
     'Transport Fee': 0,
     'Game Fee': 0,
-    // 'Electricity & Generator Fee': 0,
     'College Examination Fee': 0,
     'Journal & Magazine': 0,
     'Cultural Activity': 0,
@@ -31,7 +30,7 @@ function PaymentForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     const totalAmount = Object.values(paymentDetails).reduce((acc, item) => acc + item, 0);
-    const paymentData = { name, rollNo, amount: totalAmount, paymentDetails };
+    const paymentData = { name, rollNo, amount: totalAmount, paymentDetails: { ...paymentDetails, Total: totalAmount } }; // Add Total key
     onSubmit(paymentData);
   };
 
@@ -59,7 +58,7 @@ function PaymentForm({ onSubmit }) {
         </div>
       ))}
 
-      <button type="submit_btn" className={styles.submit_Button}>
+      <button type="submit" className={styles.submit_Button}>
         Generate Receipt
       </button>
     </form>
@@ -71,10 +70,7 @@ function Receipt({ payment }) {
 
   const receiptNo = `NNG-${Math.floor(Math.random() * 10000)}`;
 
-  const totalAmount = Object.values(payment.paymentDetails).reduce(
-    (sum, key) => (key !== 'Total' ? sum + payment.paymentDetails[key] : sum),
-    0
-  );
+  const totalAmount = payment.amount; // Now this is directly taken from the paymentData
 
   const convertToWords = (num) => {
     const a = [
@@ -144,8 +140,10 @@ function Receipt({ payment }) {
     <div className={styles.payment_ReceiptContainer}>
       <div className={styles.receipt_Heading}>
         <h3>MONEY RECEIPT</h3>
-        <p><strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br />
-                JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</strong></p>
+        <p>
+          <strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br />
+            JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</strong>
+        </p>
         <p>Mob: 9576035072</p>
       </div>
 
@@ -201,9 +199,9 @@ function Receipt({ payment }) {
         </table>
         <h4>Received Rupees (in words): {totalInWords}</h4>
         <div className="header-row">
-              <p><strong>Thank You</strong></p>
-              <p><strong>Authorized Signature</strong></p>
-            </div>
+          <p><strong>Thank You</strong></p>
+          <p><strong>Authorized Signature</strong></p>
+        </div>
       </div>
 
       <div className={styles.print_ButtonContainer}>
@@ -212,7 +210,6 @@ function Receipt({ payment }) {
         </button>
       </div>
     </div>
-    
   );
 }
 
