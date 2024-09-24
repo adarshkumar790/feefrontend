@@ -1,0 +1,142 @@
+/* Receipt.module.css */
+
+/* Container for two receipts on a single page */
+.receipt_Page {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Ensure spacing between receipts */
+  align-items: flex-start; /* Align receipts to the top */
+}
+
+/* Adjusted Payment Receipt Container */
+.payment_ReceiptContainer {
+  padding: 5px; /* Reduced padding */
+  width: 45%; /* Width to fit two receipts */
+  margin: 5px; /* Small margin between receipts */
+  background-color: #f9f9f9;
+  box-shadow: none; /* Remove shadow to save space */
+  font-size: 10px; /* Reduced font size */
+}
+
+/* Receipt Heading Styles */
+.receipt_Heading {
+  text-align: center;
+  margin-bottom: 5px; /* Reduced margin */
+}
+
+.receipt_Heading h3 {
+  margin: 0;
+  font-size: 18px; /* Reduced font size */
+  font-weight: bold;
+}
+
+.receipt_Heading p {
+  margin: 0;
+  font-size: 12px; /* Reduced font size */
+  color: #000;
+}
+
+/* Styles for aligning receipt number, date, and name in the same row */
+.receipt_Row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px; /* Reduced margin */
+}
+
+
+.receipt_Header p {
+  margin: 0;
+  font-size: 10px; /* Reduced font size */
+}
+
+/* Receipt Body Styles */
+.payment_DetailsTable {
+  width: 100%;
+  margin-top: 5px; /* Reduced margin */
+  border-collapse: collapse;
+  font-size: 10px; /* Reduced font size */
+}
+
+.payment_DetailsTable th,
+.payment_DetailsTable td {
+  border: 1px solid #000; /* Keep inner table border */
+  padding: 2px; /* Reduced padding */
+  text-align: left;
+}
+
+/* Print Button Container */
+.print_ButtonContainer {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.print_Button {
+  padding: 6px 10px; /* Reduced padding */
+  font-size: 12px; /* Reduced font size */
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.print_Button:hover {
+  background-color: #0056b3;
+}
+
+/* Payment Form Styles */
+.payment_Form {
+  margin: 10px auto; /* Reduced margin */
+  width: 380px; /* Reduced form width */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form_Group {
+  margin-bottom: 10px; /* Reduced space between form elements */
+  width: 100%;
+}
+
+.form_Group label {
+  display: block;
+  margin-bottom: 3px; /* Reduced space below labels */
+  font-size: 12px; /* Reduced font size */
+}
+
+.form_Group input {
+  font-size: 12px; /* Reduced input font size */
+}
+
+.submit_Button {
+  padding: 8px 12px; /* Reduced padding */
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Full width for the button */
+}
+
+.submit_Button:hover {
+  background-color: #0056b3;
+}
+
+/* Additional media query for print view */
+@media print {
+  /* Applying styles only to the receipt page and containers */
+  .receipt_Page {
+    display: block; /* Display receipts vertically */
+  }
+
+  .print_Button{
+    display: none;
+  }
+
+  .payment_ReceiptContainer {
+    width: 95%; /* Fit two receipts on the page */
+    /* margin: 10px 1%; Small margin for receipts */
+    margin-left: 8px;
+    float: left; /* Align receipts side by side */
+    page-break-inside: avoid; /* Prevent breaking receipt within page */
+  }
+}
