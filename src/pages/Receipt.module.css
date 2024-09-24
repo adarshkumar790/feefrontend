@@ -133,7 +133,7 @@
   }
 
   .payment_ReceiptContainer {
-    width: 95%; /* Fit two receipts on the page */
+    width: 80%; /* Fit two receipts on the page */
     /* margin: 10px 1%; Small margin for receipts */
     margin-left: 8px;
     float: left; /* Align receipts side by side */
