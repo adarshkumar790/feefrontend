@@ -1,190 +1,101 @@
-/* Global styles */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f1f1f1;
-  margin: 0;
-  padding: 0;
-}
-
-/* Receipt Page Layout */
-.receipt-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 30px;
-  background-color: #fff;
-  page-break-inside: avoid; /* Prevents breaking inside the receipt page */
-}
-
-/* Receipt Styling */
-.receipt {
-  width: 80%;
-  max-width: 900px;
-  margin-bottom: 20px;
-  padding: 20px;
+/* Adjusted Payment Receipt Container without Border */
+.payment-receipt-container {
+  padding: 10px; /* Reduced padding */
+  width: 450px; /* Reduced width slightly */
+  margin: 0 auto;
   background-color: #f9f9f9;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  page-break-inside: avoid; /* Prevents breaking inside the receipt */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Retained subtle shadow for print */
+  font-size: 12px; /* Reduced overall font size */
 }
 
+/* Receipt Heading Styles */
 .receipt-heading {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .receipt-heading h3 {
-  font-size: 15px;
-  margin-bottom: 5px;
+  margin: 0;
+  font-size: 18px; /* Reduced font size */
   font-weight: bold;
 }
 
 .receipt-heading p {
-  font-size: 15px;
   margin: 0;
+  font-size: 12px; /* Reduced font size */
 }
 
+/* Styles for aligning receipt number, date, and name in the same row */
 .receipt-row {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px; /* Reduced margin */
 }
 
-.receipt-row p {
-  font-size: 10px;
+.receipt-header p {
   margin: 0;
+  font-size: 12px; /* Reduced font size */
 }
 
-.receipt-body {
-  margin-bottom: 20px;
-}
-
-/* Table Styling */
+/* Receipt Body Styles */
 .payment-details-table {
   width: 100%;
-  margin-bottom: 20px;
-  background-color: #fff;
+  margin-top: 10px; /* Reduced margin */
+  border-collapse: collapse;
+  font-size: 12px; /* Reduced font size */
 }
 
 .payment-details-table th,
 .payment-details-table td {
   border: 1px solid #000;
-  padding: 10px;
+  padding: 5px; /* Reduced padding */
   text-align: left;
-  font-size: 10px;
 }
 
-.payment-details-table th {
-  background-color: #f1f1f1;
-  font-weight: bold;
-}
-
-.payment-details-table td {
-  background-color: #fafafa;
-}
-
-.divider {
-  border: 0;
-  margin: 15px 0;
-  width: 90%;
-}
-
+/* Print Button Container */
 .print-button-container {
+  margin-top: 10px; /* Reduced margin */
   text-align: center;
-  margin-top: 20px;
 }
 
 .print-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
+  padding: 8px 15px; /* Reduced padding */
+  font-size: 14px; /* Reduced font size */
 }
 
+/* Reduced button hover effect */
 .print-button:hover {
   background-color: #45a049;
 }
 
-/* Form Styles */
+/* Payment Form Styles */
 .payment-form {
-  width: 80%;
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 25px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto; /* Center the form horizontally */
+  width: 400px; /* Fixed width for the form */
+  display: flex;
+  flex-direction: column; /* Arrange children in a column */
+  align-items: center; /* Center items horizontally */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 15px; /* Space between form elements */
+  width: 100%; /* Make the form groups take full width */
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-size: 16px;
+  display: block; /* Labels on their own line */
+  margin-bottom: 5px; /* Space below labels */
 }
 
 .submit-button {
-  background-color: #4CAF50;
-  color: white;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  font-size: 18px;
-  border-radius: 5px;
+  padding: 10px 15px; /* Padding for the button */
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  cursor: pointer; /* Pointer cursor on hover */
+  width: 100%; /* Full width for the button */
 }
 
 .submit-button:hover {
-  background-color: #45a049;
-}
-
-/* Print-specific styles */
-@media print {
-  .print-button, 
-  .print-button-container, 
-  .payment-form {
-    display: none;
-  }
-
-  .payment-details-table{
-    width: 100%;
-  }
-
-  .receipt-page {
-    flex-direction: row;
-    /* justify-content: space-between; */
-    /* align-items: flex-start; */
-    width: 100%;
-    /* page-break-inside: avoid; */
-  }
-
-  .receipt {
-    width: 48%;
-    margin: 0 10px;
-    page-break-inside: avoid;
-  }
-
-  body {
-    margin: 0; /* Ensures no extra margin when printing */
-    padding: 0;
-  }
-
-  @page {
-    margin: 0.2cm; /* Reduces print margins */
-  }
+  background-color: #0056b3; /* Darker shade on hover */
 }
