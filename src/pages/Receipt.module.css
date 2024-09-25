@@ -123,6 +123,8 @@
   align-items: center; /* Vertically center the text */
   font-size: 1em;
   width: 95%; /* Ensure the header spans the full width */
+  /* margin-top: 0; */
+  margin-bottom: 0; /* Remove any extra margin below header */
   margin-top: 0;
 }
 
