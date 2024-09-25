@@ -65,10 +65,8 @@ function PaymentForm({ onSubmit }) {
   );
 }
 
-function Receipt({ payment }) {
+function Receipt({ payment, receiptNo }) {
   if (!payment) return null;
-
-  const receiptNo = `NNG-${Math.floor(Math.random() * 10000)}`;
 
   const totalAmount = payment.amount; // Now this is directly taken from the paymentData
 
@@ -215,6 +213,7 @@ function Receipt({ payment }) {
 
 function App() {
   const [paymentData, setPaymentData] = useState(null);
+  const [receiptNo] = useState(`NNG-${Math.floor(Math.random() * 10000)}`); // Generate receipt number once
 
   const handleFormSubmit = (data) => {
     setPaymentData(data);
@@ -226,8 +225,8 @@ function App() {
         <PaymentForm onSubmit={handleFormSubmit} />
       ) : (
         <div className={styles.receipt_Page}>
-          <Receipt payment={paymentData} />
-          <Receipt payment={paymentData} />
+          <Receipt payment={paymentData} receiptNo={receiptNo} />
+          <Receipt payment={paymentData} receiptNo={receiptNo} />
         </div>
       )}
     </div>
