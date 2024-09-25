@@ -198,9 +198,9 @@ function Receipt({ payment }) {
           </tbody>
         </table>
         <h4>Received Rupees (in words): {totalInWords}</h4>
-        <div className="header-row">
-          <p><strong>Thank You</strong></p>
-          <p><strong>Authorized Signature</strong></p>
+        <div className={styles.header}>
+          <p>Thank You</p>
+          <p>Authorized Signature</p>
         </div>
       </div>
 
