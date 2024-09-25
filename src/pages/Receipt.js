@@ -144,7 +144,7 @@ function Receipt({ payment }) {
           <strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br />
             JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</strong>
         </p>
-        <p>Mob: 9576035072</p>
+        <p>Phon No: 06512913165</p>
       </div>
 
       <div className={styles.receipt_Header}>
