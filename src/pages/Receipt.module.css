@@ -24,6 +24,7 @@
   margin-bottom: 5px; /* Reduced margin */
 }
 
+
 .receipt_Heading h3 {
   margin: 0;
   font-size: 18px; /* Reduced font size */
@@ -83,6 +84,10 @@
   background-color: #0056b3;
 }
 
+.save_ButtonContainer{
+  margin-top: 20px;
+}
+
 /* Payment Form Styles */
 .payment_Form {
   margin: 10px auto; /* Reduced margin */
@@ -140,8 +145,12 @@
     display: block; /* Display receipts vertically */
   }
 
-  .print_Button{
+  .print_Button, .save_Button{
     display: none;
+  }
+
+  .save_ButtonContainer{
+    margin-top: 20px;
   }
 
   .payment_ReceiptContainer {

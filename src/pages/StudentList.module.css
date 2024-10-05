@@ -1,0 +1,131 @@
+.studentListContainer {
+    padding: 20px;
+    max-width: 1500px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px; /* Small font size */
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 18px;
+  }
+  
+  .exportExcel {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 10%;
+  }
+  .exportPdf{
+    margin-left: 12px;
+    display: inline-block;
+    background-color: #e406a1;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    width: 10%;
+  }
+  
+  .exportButton:hover {
+    background-color: #45a049;
+  }
+  
+  .receiptTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .receiptTable th,
+  .receiptTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .receiptTable th {
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold;
+    font-size: 12px;
+  }
+  
+  .receiptTable td {
+    vertical-align: top;
+    font-size: 12px; /* Small font size */
+  }
+  
+  .receiptAmount {
+    color: #2E8B57;
+    font-weight: bold;
+  }
+  .Rollno{
+    color: calc(#000080 + 20%);
+    font-weight: bold;
+  }
+  .Name{
+    color: #e406a1;
+    font-weight: bold;
+  }
+
+  .receiptDate {
+    color: #000080;
+    font-weight: bold;
+  }
+  .receiptTotal{
+    color: hsl(240, 81%, 4%);
+    font-weight: bold;
+  }
+  .duesFee {
+    color: #eb0404;
+    font-weight: bold;
+  }
+  .receiptDetails {
+    color: green;
+    font-weight: bold;
+  }
+  
+  
+  .receiptList {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+  
+  .receiptDetails {
+    padding: 10px 0;
+  }
+  
+  .receiptDetails:not(:last-child) {
+    border-bottom: 1px dashed #ddd;
+  }
+  
+  @media (max-width: 768px) {
+    .studentListContainer {
+      padding: 10px;
+    }
+  
+    .exportButton {
+      width: 100%;
+      font-size: 12px;
+    }
+  
+    .receiptTable th,
+    .receiptTable td {
+      font-size: 10px; /* Even smaller font size for mobile view */
+    }
+  }
+  

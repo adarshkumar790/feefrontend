@@ -1,4 +1,7 @@
+// src/App.js
+
 import React, { useState } from 'react';
+import axios from 'axios';
 import styles from './Receipt.module.css'; // Importing the CSS module
 
 function PaymentForm({ onSubmit }) {
@@ -38,11 +41,21 @@ function PaymentForm({ onSubmit }) {
     <form onSubmit={handleSubmit} className={styles.payment_Form}>
       <div className={styles.form_Group}>
         <label>Name:</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
       </div>
       <div className={styles.form_Group}>
         <label>Roll No:</label>
-        <input type="text" value={rollNo} onChange={(e) => setRollNo(e.target.value)} required />
+        <input
+          type="text"
+          value={rollNo}
+          onChange={(e) => setRollNo(e.target.value)}
+          required
+        />
       </div>
 
       {Object.keys(paymentDetails).map((key) => (
@@ -53,6 +66,7 @@ function PaymentForm({ onSubmit }) {
             name={key}
             value={paymentDetails[key]}
             onChange={handleInputChange}
+            min="0"
             required
           />
         </div>
@@ -61,14 +75,15 @@ function PaymentForm({ onSubmit }) {
       <button type="submit" className={styles.submit_Button}>
         Generate Receipt
       </button>
+      
     </form>
   );
 }
 
-function Receipt({ payment, receiptNo }) {
+function Receipt({ payment, receiptNo, onSave }) {
   if (!payment) return null;
 
-  const totalAmount = payment.amount; // Now this is directly taken from the paymentData
+  const totalAmount = payment.amount; 
 
   const convertToWords = (num) => {
     const a = [
@@ -139,10 +154,12 @@ function Receipt({ payment, receiptNo }) {
       <div className={styles.receipt_Heading}>
         <h3>MONEY RECEIPT</h3>
         <p>
-          <strong>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br />
-            JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</strong>
+          <strong>
+            N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE <br />
+            JAMUARY, KANKE, RANCHI-834006(JHARKHAND)
+          </strong>
         </p>
-        <p>Phon No: 06512913165</p>
+        <p>Phone No: 06512913165</p>
       </div>
 
       <div className={styles.receipt_Header}>
@@ -207,16 +224,68 @@ function Receipt({ payment, receiptNo }) {
           Print Receipt
         </button>
       </div>
+
+      <div className={styles.save_ButtonContainer}>
+        <button onClick={onSave} className={styles.save_Button}>
+          Save to Database
+        </button>
+      </div>
     </div>
   );
 }
 
+
+ const baseURL = 'https://feebackend.onrender.com'
+
 function App() {
   const [paymentData, setPaymentData] = useState(null);
-  const [receiptNo] = useState(`NNG-${Math.floor(Math.random() * 10000)}`); // Generate receipt number once
+  const [receiptNo, setReceiptNo] = useState('');
+  const [date, setDate] = useState(new Date());
 
   const handleFormSubmit = (data) => {
+    // Generate a unique receipt number
+    const generatedReceiptNo = `NNG-${Math.floor(100000 + Math.random() * 900000)}`;
+    setReceiptNo(generatedReceiptNo);
     setPaymentData(data);
+  };
+
+  const handleSaveToDatabase = async () => {
+    if (!paymentData) return;
+
+    const payload = {
+      receiptno: receiptNo,
+      name: paymentData.name,
+      rollno: paymentData.rollNo,
+      admissionfee: paymentData.paymentDetails['Admission & Registration Fee'],
+      developmentFund: paymentData.paymentDetails['Development Fund'],
+      tuitionFee: paymentData.paymentDetails['Tuition Fee'],
+      libFee: paymentData.paymentDetails['Library Fee'],
+      labFee: paymentData.paymentDetails['Laboratory Fee'],
+      computerLabFee: paymentData.paymentDetails['Computer Laboratory Fee'],
+      transportFee: paymentData.paymentDetails['Transport Fee'],
+      gameFee: paymentData.paymentDetails['Game Fee'],
+      examinationFee: paymentData.paymentDetails['College Examination Fee'],
+      journalMagazine: paymentData.paymentDetails['Journal & Magazine'],
+      culturalActivity: paymentData.paymentDetails['Cultural Activity'],
+      prospectusFee: paymentData.paymentDetails['Prospectus & Admission Form'],
+      other: paymentData.paymentDetails['Others'],
+      totalAmount: paymentData.amount,
+      date: date.toLocaleDateString()
+    };
+
+    try {
+      const response = await axios.post(`${baseURL}/api/receipts`, payload);
+      if (response.status === 201) {
+        alert('Receipt saved to database successfully!');
+      }
+    } catch (error) {
+      console.error('Error saving receipt:', error);
+      if (error.response && error.response.data && error.response.data.error) {
+        alert(`Error: ${error.response.data.error}`);
+      } else {
+        alert('Failed to save receipt. Please try again.');
+      }
+    }
   };
 
   return (
@@ -225,8 +294,8 @@ function App() {
         <PaymentForm onSubmit={handleFormSubmit} />
       ) : (
         <div className={styles.receipt_Page}>
-          <Receipt payment={paymentData} receiptNo={receiptNo} />
-          <Receipt payment={paymentData} receiptNo={receiptNo} />
+          <Receipt payment={paymentData} receiptNo={receiptNo} onSave={handleSaveToDatabase} />
+          <Receipt payment={paymentData} receiptNo={receiptNo} onSave={handleSaveToDatabase} />
         </div>
       )}
     </div>
