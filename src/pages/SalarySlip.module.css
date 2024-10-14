@@ -1,0 +1,109 @@
+/* Container for the form and payslip */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* Form styles */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .form h2 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .form div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #444;
+  }
+  
+  .form input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Table styles for the payslip */
+  .payslip {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .payslipTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .payslipTable th, .payslipTable td {
+    border: 1px solid #000;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .payslipTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .payslipTable td {
+    font-size: 14px;
+  }
+  
+  .signatureSection {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+  }
+  
+  .signatureSection div {
+    width: 45%;
+    text-align: center;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+  }
+  
+  .footerNote {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 12px;
+  }
+  

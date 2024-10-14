@@ -7,6 +7,7 @@ import PaymentReceipt from './components/PaymentReciept';
 import Login from './pages/Login';
 import Receipt from './pages/Receipt';
 import StudentPaymentList from './pages/StudentPaymentList';
+import SalarySlip from './pages/SalarySlip';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path='/' element={<Login/>}/>
           <Route path='/receipt' element={<Receipt/>}/>
           <Route path='/studentlist' element={<StudentPaymentList/>}/>
+          <Route path='/salary' element={<SalarySlip/>}/>
         </Routes>
       </div>
     </Router>
