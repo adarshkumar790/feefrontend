@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem('token'); // Remove token on logout
+    localStorage.removeItem('token'); 
     setIsAdmin(false);
   };
 
