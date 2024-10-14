@@ -26,6 +26,7 @@ function Home() {
         <Link to="/add-student" className="add-student-button">Add Student</Link>
         <Link to="/receipt" className="generate-receipt-button">Generate Receipt</Link>
         <Link to="/studentlist" className="generate-receipt-button">Student Payment List</Link>
+        <Link to="/salary" className="generate-receipt-button">SalarySlip</Link>
       </div>
       <div className="filter-container">
         <label>Filter by Session:</label>

@@ -22,6 +22,7 @@ function App() {
           <Route path='/receipt' element={<Receipt/>}/>
           <Route path='/studentlist' element={<StudentPaymentList/>}/>
           <Route path='/salary' element={<SalarySlip/>}/>
+          
         </Routes>
       </div>
     </Router>
