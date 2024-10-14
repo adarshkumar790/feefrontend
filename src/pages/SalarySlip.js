@@ -28,7 +28,8 @@ function SalarySlip() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowPayslip(true);
-    
+
+    // Generate a receipt number (e.g., timestamp + random number)
     const generatedReceiptNumber = `RCP-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     setReceiptNumber(generatedReceiptNumber);
   };
@@ -46,26 +47,6 @@ function SalarySlip() {
     parseFloat(formData.advance || 0);
 
   const netPay = totalEarnings - totalDeductions;
-
-  const handleReset = () => {
-    setShowPayslip(false);
-    setReceiptNumber('');
-    setFormData({
-      name: '',
-      designation: '',
-      dateOfJoining: '',
-      month: '',
-      workedDays: '',
-      basicPay: '',
-      da: '',
-      hra: '',
-      tpt: '',
-      pfa: '',
-      eslc: '',
-      eol: '',
-      advance: '',
-    });
-  };
 
   return (
     <div className={styles.container}>
@@ -111,45 +92,122 @@ function SalarySlip() {
               required
             >
               <option value="">Select Month</option>
-              {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map((month) => (
-                <option key={month} value={month}>{month}</option>
-              ))}
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
             </select>
           </div>
 
           {/* Earnings Section */}
           <h2>Earnings</h2>
-          {['Basic Pay', 'DA', 'House Rent Allowance (HRA)', 'TPT'].map((label) => (
-            <div key={label}>
-              <label>{label}</label>
-              <input
-                type="number"
-                name={label === 'Basic Pay' ? 'basicPay' : label.toLowerCase().replace(/ /g, '')}
-                value={formData[label === 'Basic Pay' ? 'basicPay' : label.toLowerCase().replace(/ /g, '')]}
-                onChange={handleChange}
-                required
-                min="0"
-                step="0.01"
-              />
-            </div>
-          ))}
+          <div>
+            <label>Basic Pay</label>
+            <input
+              type="number"
+              name="basicPay"
+              value={formData.basicPay}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>DA</label>
+            <input
+              type="number"
+              name="da"
+              value={formData.da}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>House Rent Allowance (HRA)</label>
+            <input
+              type="number"
+              name="hra"
+              value={formData.hra}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>TPT</label>
+            <input
+              type="number"
+              name="tpt"
+              value={formData.tpt}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
 
           {/* Deductions Section */}
           <h2>Deductions</h2>
-          {['PF', 'ESLC', 'EOL', 'Advance'].map((label) => (
-            <div key={label}>
-              <label>{label}</label>
-              <input
-                type="number"
-                name={label.toLowerCase()}
-                value={formData[label.toLowerCase()]}
-                onChange={handleChange}
-                required
-                min="0"
-                step="0.01"
-              />
-            </div>
-          ))}
+          <div>
+            <label>PF</label>
+            <input
+              type="number"
+              name="pfa"
+              value={formData.pfa}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>ESLC</label>
+            <input
+              type="number"
+              name="eslc"
+              value={formData.eslc}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>EOL</label>
+            <input
+              type="number"
+              name="eol"
+              value={formData.eol}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
+          <div>
+            <label>Advance</label>
+            <input
+              type="number"
+              name="advance"
+              value={formData.advance}
+              onChange={handleChange}
+              required
+              min="0"
+              step="0.01"
+            />
+          </div>
 
           <button type="submit">Generate Payslip</button>
         </form>
@@ -163,13 +221,8 @@ function SalarySlip() {
           </div>
 
           {/* Displaying the Receipt Number and Selected Month */}
-          <div className={styles.monthContainer}>
-            <div className={styles.receiptNumber}>
-              <strong>Receipt No:</strong> {receiptNumber}
-            </div>
-            <div className={styles.month}>
-              <strong>Month:</strong> {formData.month}
-            </div>
+          <div className={styles.month}>
+            <strong>Receipt No:</strong> {receiptNumber} &nbsp;|&nbsp; <strong>Month:</strong> {formData.month}
           </div>
 
           {/* Employee Information Table */}
@@ -243,7 +296,8 @@ function SalarySlip() {
             </tbody>
           </table>
 
-          <button onClick={handleReset}>Reset</button>
+          {/* Reset Button */}
+          <button  onClick={() => { setShowPayslip(false); setReceiptNumber(''); setFormData({ name: '', designation: '', dateOfJoining: '', month: '', workedDays: '', basicPay: '', da: '', hra: '', tpt: '', pfa: '', eslc: '', eol: '', advance: '' }); }}>Generate Another Payslip</button>
         </div>
       )}
     </div>
