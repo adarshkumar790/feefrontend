@@ -29,7 +29,7 @@ function SalarySlip() {
     e.preventDefault();
     setShowPayslip(true);
 
-    // Generate a receipt number (e.g., timestamp + random number)
+    // Correct usage of template literals with backticks
     const generatedReceiptNumber = `RCP-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     setReceiptNumber(generatedReceiptNumber);
   };
@@ -47,6 +47,30 @@ function SalarySlip() {
     parseFloat(formData.advance || 0);
 
   const netPay = totalEarnings - totalDeductions;
+
+  const handleReset = () => {
+    setShowPayslip(false);
+    setReceiptNumber('');
+    setFormData({
+      name: '',
+      designation: '',
+      dateOfJoining: '',
+      month: '',
+      workedDays: '',
+      basicPay: '',
+      da: '',
+      hra: '',
+      tpt: '',
+      pfa: '',
+      eslc: '',
+      eol: '',
+      advance: '',
+    });
+  };
+
+  const handlePrint = () => {
+    window.print();
+  };
 
   return (
     <div className={styles.container}>
@@ -92,18 +116,24 @@ function SalarySlip() {
               required
             >
               <option value="">Select Month</option>
-              <option value="January">January</option>
-              <option value="February">February</option>
-              <option value="March">March</option>
-              <option value="April">April</option>
-              <option value="May">May</option>
-              <option value="June">June</option>
-              <option value="July">July</option>
-              <option value="August">August</option>
-              <option value="September">September</option>
-              <option value="October">October</option>
-              <option value="November">November</option>
-              <option value="December">December</option>
+              {[
+                'January',
+                'February',
+                'March',
+                'April',
+                'May',
+                'June',
+                'July',
+                'August',
+                'September',
+                'October',
+                'November',
+                'December',
+              ].map((month) => (
+                <option key={month} value={month}>
+                  {month}
+                </option>
+              ))}
             </select>
           </div>
 
@@ -221,8 +251,13 @@ function SalarySlip() {
           </div>
 
           {/* Displaying the Receipt Number and Selected Month */}
-          <div className={styles.month}>
-            <strong>Receipt No:</strong> {receiptNumber} &nbsp;|&nbsp; <strong>Month:</strong> {formData.month}
+          <div className={styles.monthContainer}>
+            <div className={styles.receiptNumber}>
+              <strong>Receipt No:</strong> {receiptNumber}
+            </div>
+            <div className={styles.month}>
+              <strong>Month:</strong> {formData.month}
+            </div>
           </div>
 
           {/* Employee Information Table */}
@@ -261,27 +296,27 @@ function SalarySlip() {
             <tbody>
               <tr>
                 <td>Basic Pay</td>
-                <td>{parseFloat(formData.basicPay).toFixed(2)}</td>
+                <td>{(parseFloat(formData.basicPay) || 0).toFixed(2)}</td>
                 <td>PF</td>
-                <td>{parseFloat(formData.pfa).toFixed(2)}</td>
+                <td>{(parseFloat(formData.pfa) || 0).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>DA</td>
-                <td>{parseFloat(formData.da).toFixed(2)}</td>
+                <td>{(parseFloat(formData.da) || 0).toFixed(2)}</td>
                 <td>ESLC</td>
-                <td>{parseFloat(formData.eslc).toFixed(2)}</td>
+                <td>{(parseFloat(formData.eslc) || 0).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>House Rent Allowance (HRA)</td>
-                <td>{parseFloat(formData.hra).toFixed(2)}</td>
+                <td>{(parseFloat(formData.hra) || 0).toFixed(2)}</td>
                 <td>EOL</td>
-                <td>{parseFloat(formData.eol).toFixed(2)}</td>
+                <td>{(parseFloat(formData.eol) || 0).toFixed(2)}</td>
               </tr>
               <tr>
                 <td>TPT</td>
-                <td>{parseFloat(formData.tpt).toFixed(2)}</td>
+                <td>{(parseFloat(formData.tpt) || 0).toFixed(2)}</td>
                 <td>Advance</td>
-                <td>{parseFloat(formData.advance).toFixed(2)}</td>
+                <td>{(parseFloat(formData.advance) || 0).toFixed(2)}</td>
               </tr>
               <tr>
                 <td><strong>Total Earnings</strong></td>
@@ -296,8 +331,18 @@ function SalarySlip() {
             </tbody>
           </table>
 
-          {/* Reset Button */}
-          <button  onClick={() => { setShowPayslip(false); setReceiptNumber(''); setFormData({ name: '', designation: '', dateOfJoining: '', month: '', workedDays: '', basicPay: '', da: '', hra: '', tpt: '', pfa: '', eslc: '', eol: '', advance: '' }); }}>Generate Another Payslip</button>
+          {/* Buttons: Print and Reset */}
+          <div className={styles.buttonContainer}>
+            <button onClick={handlePrint} className={styles.printButton}>
+              Print
+            </button>
+            <button
+              onClick={handleReset}
+              className={styles.resetButton}
+            >
+              Generate Another Payslip
+            </button>
+          </div>
         </div>
       )}
     </div>
