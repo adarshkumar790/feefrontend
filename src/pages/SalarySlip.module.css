@@ -1,11 +1,10 @@
 /* Container for the form and payslip */
 .container {
-  max-width: 700px; /* Reduced from 800px to 700px */
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Form styles */
@@ -34,22 +33,15 @@
   color: #444;
 }
 
-.form input,
-.form select {
+.form input {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 100%;
-  box-sizing: border-box;
 }
 
-.form select {
-  appearance: none;
-  background-color: #fff;
-}
-
-.form button {
+button {
   padding: 12px;
   font-size: 16px;
   color: white;
@@ -59,78 +51,31 @@
   cursor: pointer;
   width: 100%;
   margin-top: 20px;
-  transition: background-color 0.3s ease;
 }
 
-.form button:hover {
+button:hover {
   background-color: #45a049;
 }
 
-/* Payslip section */
+/* Table styles for the payslip */
 .payslip {
   background-color: #fff;
   padding: 20px;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 8px;
   margin-top: 20px;
 }
 
-/* College Header */
-.header {
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.header h3 {
-  margin: 0;
-  font-size: 22px;
-  text-transform: uppercase;
-  color: #333;
-}
-
-.header p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-}
-
-/* Receipt and Month Container */
-.monthContainer {
-  display: flex;
-  justify-content: space-between; /* Distribute space between elements */
-  margin-bottom: 20px; /* Space below the month container */
-}
-
-.receiptNumber {
-  text-align: left; /* Align receipt number to the left */
-  font-size: 16px; /* Font size for receipt number */
-}
-
-.month {
-  text-align: right; /* Align month to the right */
-  font-size: 16px; /* Font size for month */
-}
-
-/* Adjusted .month to align correctly */
-.monthContainer .month {
-  margin: 0;
-}
-
-/* Payslip Table */
 .payslipTable {
   width: 100%;
-  margin-bottom: 20px;
   border-collapse: collapse;
+  margin-bottom: 20px;
 }
 
-.payslipTable th,
-.payslipTable td {
+.payslipTable th, .payslipTable td {
   border: 1px solid #000;
-  padding: 10px;
+  padding: 8px;
   text-align: left;
-  font-size: 14px;
 }
 
 .payslipTable th {
@@ -142,90 +87,22 @@
   font-size: 14px;
 }
 
-/* Footer Note */
-.footerNote {
-  margin-top: 10px;
-  font-size: 12px;
-  text-align: center;
-  color: #666;
-  font-style: italic;
-}
-
-/* Buttons Container */
-.buttonContainer {
+.signatureSection {
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.signatureSection div {
+  width: 45%;
+  text-align: center;
+  border-top: 1px solid #000;
+  padding-top: 5px;
+}
+
+.footerNote {
+  text-align: center;
   margin-top: 20px;
-}
-
-/* Print Button */
-.printButton {
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.printButton:hover {
-  background-color: #0056b3;
-}
-
-/* Reset Button */
-.resetButton {
-  padding: 10px 20px;
-  font-size: 14px;
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.resetButton:hover {
-  background-color: #c82333;
-}
-
-/* Media Query for Print */
-@media print {
-  /* Hide everything except the payslip */
-  body * {
-    visibility: hidden;
-  }
-
-  .payslip,
-  .payslip * {
-    visibility: visible;
-  }
-
-  .payslip {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0; /* Remove any margins */
-    padding: 0; /* Remove any padding */
-    border: none; /* Remove border for print */
-  }
-
-  /* Hide buttons in the printout */
-  .buttonContainer {
-    display: none;
-  }
-
-  /* Adjust the receipt and month alignment for print */
-  .monthContainer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .monthContainer .month {
-    text-align: left;
-    margin-top: 5px;
-  }
+  font-style: italic;
+  font-size: 12px;
 }

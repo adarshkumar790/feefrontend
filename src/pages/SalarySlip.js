@@ -5,8 +5,9 @@ function SalarySlip() {
   const [formData, setFormData] = useState({
     name: '',
     designation: '',
+    // department: '',
     dateOfJoining: '',
-    month: '',
+    // payPeriod: '',
     workedDays: '',
     basicPay: '',
     da: '',
@@ -19,7 +20,6 @@ function SalarySlip() {
   });
 
   const [showPayslip, setShowPayslip] = useState(false);
-  const [receiptNumber, setReceiptNumber] = useState('');
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,10 +28,6 @@ function SalarySlip() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowPayslip(true);
-
-    // Correct usage of template literals with backticks
-    const generatedReceiptNumber = `RCP-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
-    setReceiptNumber(generatedReceiptNumber);
   };
 
   const totalEarnings =
@@ -47,30 +43,6 @@ function SalarySlip() {
     parseFloat(formData.advance || 0);
 
   const netPay = totalEarnings - totalDeductions;
-
-  const handleReset = () => {
-    setShowPayslip(false);
-    setReceiptNumber('');
-    setFormData({
-      name: '',
-      designation: '',
-      dateOfJoining: '',
-      month: '',
-      workedDays: '',
-      basicPay: '',
-      da: '',
-      hra: '',
-      tpt: '',
-      pfa: '',
-      eslc: '',
-      eol: '',
-      advance: '',
-    });
-  };
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   return (
     <div className={styles.container}>
@@ -107,35 +79,26 @@ function SalarySlip() {
               required
             />
           </div>
-          <div>
-            <label>Month</label>
-            <select
-              name="month"
-              value={formData.month}
+          {/* <div>
+            <label>Pay Period</label>
+            <input
+              type="text"
+              name="payPeriod"
+              value={formData.payPeriod}
               onChange={handleChange}
               required
-            >
-              <option value="">Select Month</option>
-              {[
-                'January',
-                'February',
-                'March',
-                'April',
-                'May',
-                'June',
-                'July',
-                'August',
-                'September',
-                'October',
-                'November',
-                'December',
-              ].map((month) => (
-                <option key={month} value={month}>
-                  {month}
-                </option>
-              ))}
-            </select>
-          </div>
+            />
+          </div> */}
+          {/* <div>
+            <label>Worked Days</label>
+            <input
+              type="number"
+              name="workedDays"
+              value={formData.workedDays}
+              onChange={handleChange}
+              required
+            />
+          </div> */}
 
           {/* Earnings Section */}
           <h2>Earnings</h2>
@@ -147,8 +110,6 @@ function SalarySlip() {
               value={formData.basicPay}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
@@ -159,20 +120,16 @@ function SalarySlip() {
               value={formData.da}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
-            <label>House Rent Allowance (HRA)</label>
+            <label>House Rent Allowance</label>
             <input
               type="number"
               name="hra"
               value={formData.hra}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
@@ -183,8 +140,6 @@ function SalarySlip() {
               value={formData.tpt}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
 
@@ -198,20 +153,16 @@ function SalarySlip() {
               value={formData.pfa}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
-            <label>ESLC</label>
+            <label>ESIC</label>
             <input
               type="number"
               name="eslc"
               value={formData.eslc}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
@@ -222,8 +173,6 @@ function SalarySlip() {
               value={formData.eol}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
           <div>
@@ -234,8 +183,6 @@ function SalarySlip() {
               value={formData.advance}
               onChange={handleChange}
               required
-              min="0"
-              step="0.01"
             />
           </div>
 
@@ -243,24 +190,11 @@ function SalarySlip() {
         </form>
       ) : (
         <div className={styles.payslip}>
-          {/* College Name and Address */}
-          <div className={styles.header}>
-            <h3>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE</h3>
-            <p>SANATAN ROAD, JAMUARY, KANKE, RANCHI-834006 (JHARKHAND)</p>
-            <p>Mob:-06512913165</p>
-          </div>
-
-          {/* Displaying the Receipt Number and Selected Month */}
-          <div className={styles.monthContainer}>
-            <div className={styles.receiptNumber}>
-              <strong>Receipt No:</strong> {receiptNumber}
-            </div>
-            <div className={styles.month}>
-              <strong>Month:</strong> {formData.month}
-            </div>
-          </div>
-
-          {/* Employee Information Table */}
+          <h3>N.N.GHOSH SANATAN TEACHERS TRAINING COLLEGE
+          SANATAN ROAD, JAMUARY, KANKE, RANCHI-834006(JHARKHAND)</h3>
+          <h3>Mob:-</h3>
+          <div></div>
+          <p>Month</p>
           <table className={styles.payslipTable}>
             <thead>
               <tr>
@@ -280,6 +214,10 @@ function SalarySlip() {
                 <td><strong>Date of Joining</strong></td>
                 <td>{formData.dateOfJoining}</td>
               </tr>
+              {/* <tr>
+                <td><strong>Worked Days</strong></td>
+                <td>{formData.workedDays}</td>
+              </tr> */}
             </tbody>
           </table>
 
@@ -296,27 +234,19 @@ function SalarySlip() {
             <tbody>
               <tr>
                 <td>Basic Pay</td>
-                <td>{(parseFloat(formData.basicPay) || 0).toFixed(2)}</td>
+                <td>{formData.basicPay}</td>
                 <td>PF</td>
-                <td>{(parseFloat(formData.pfa) || 0).toFixed(2)}</td>
+                <td>{formData.pfa}</td>
               </tr>
               <tr>
-                <td>DA</td>
-                <td>{(parseFloat(formData.da) || 0).toFixed(2)}</td>
-                <td>ESLC</td>
-                <td>{(parseFloat(formData.eslc) || 0).toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>House Rent Allowance (HRA)</td>
-                <td>{(parseFloat(formData.hra) || 0).toFixed(2)}</td>
+                <td>ESIC</td>
+                <td>{formData.eslc}</td>
                 <td>EOL</td>
-                <td>{(parseFloat(formData.eol) || 0).toFixed(2)}</td>
+                <td>{formData.eol}</td>
               </tr>
               <tr>
-                <td>TPT</td>
-                <td>{(parseFloat(formData.tpt) || 0).toFixed(2)}</td>
                 <td>Advance</td>
-                <td>{(parseFloat(formData.advance) || 0).toFixed(2)}</td>
+                <td>{formData.advance}</td>
               </tr>
               <tr>
                 <td><strong>Total Earnings</strong></td>
@@ -324,25 +254,24 @@ function SalarySlip() {
                 <td><strong>Total Deductions</strong></td>
                 <td><strong>{totalDeductions.toFixed(2)}</strong></td>
               </tr>
+            </tbody>
+          </table>
+
+          {/* Net Pay Section */}
+          <table className={styles.payslipTable}>
+            <tbody>
               <tr>
-                <td colSpan="3"><strong>Net Pay</strong></td>
-                <td><strong>{netPay.toFixed(2)}</strong></td>
+                <td><strong>Net Pay</strong></td>
+                <td><strong>₹{netPay.toFixed(2)}</strong></td>
               </tr>
             </tbody>
           </table>
 
-          {/* Buttons: Print and Reset */}
-          <div className={styles.buttonContainer}>
-            <button onClick={handlePrint} className={styles.printButton}>
-              Print
-            </button>
-            <button
-              onClick={handleReset}
-              className={styles.resetButton}
-            >
-              Generate Another Payslip
-            </button>
+          <div className={styles.footerNote}>
+            This is a system-generated payslip.
           </div>
+
+          <button onClick={() => setShowPayslip(false)}>Back to Form</button>
         </div>
       )}
     </div>
